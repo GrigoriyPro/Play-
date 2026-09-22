@@ -1,0 +1,42 @@
+@use 'variables' as *;
+
+.footer {
+    padding: 30px 0;
+    color: rgba(255, 255, 255, 0.7);
+    background: $color-bg-footer;
+    border-top: 1px solid $color-border;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    &__contacts {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        font-style: normal;
+    }
+
+    &__text {
+        font-size: 0.875rem;
+    }
+
+    &__link {
+        color: rgba(255, 255, 255, 0.9);
+        transition: color 200ms $transition-ease;
+
+        &:hover {
+            color: $color-accent;
+            text-decoration: underline;
+        }
+    }
+
+    &__copyright {
+        padding-top: 24px;
+        font-size: 0.8125rem;
+        color: rgba(255, 255, 255, 0.4);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+}

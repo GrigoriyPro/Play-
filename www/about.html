@@ -2,44 +2,127 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play! - О нас</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Play!</h1>
-        <nav>
-            <a href="index.html">Главная</a> |
-            <a href="catalog.html">Каталог</a> |
-            <a href="delivery.html">Доставка и оплата</a> |
-            <a href="about.html">О нас</a> |
-            <a href="profile.html">Профиль</a>
-        </nav>
-        <hr>
+    <header class="header">
+        <div class="container header__container">
+            <a href="index.html" class="logo">
+                <span class="logo__title">Play<span class="logo__accent">!</span></span>
+            </a>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
+                    <li class="nav__item nav__item--dropdown">
+                        <button type="button" class="catalog-toggle" id="catalog-toggle" aria-expanded="false">
+                            Каталог
+                            <svg class="catalog-toggle__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="catalog-panel" id="catalog-panel">
+                            <div class="catalog-categories">
+                                <a href="catalog.html?genre=strategy" class="catalog-categories__item">Стратегии</a>
+                                <a href="catalog.html?genre=card" class="catalog-categories__item">Карточные</a>
+                                <a href="catalog.html?genre=family" class="catalog-categories__item">Семейные</a>
+                                <a href="catalog.html?genre=puzzle" class="catalog-categories__item">Головоломки</a>
+                                <a href="catalog.html?genre=party" class="catalog-categories__item">Для вечеринок</a>
+                                <a href="catalog.html" class="catalog-categories__item">Другие</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item"><a href="delivery.html" class="nav__link">Доставка и оплата</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link nav__link--active">О нас</a></li>
+                    <li class="nav__item"><a href="profile.html" class="nav__link">Профиль</a></li>
+                </ul>
+            </nav>
+            <div class="actions">
+                <!-- Поиск -->
+                <div class="search">
+                    <form class="search__form" id="search-form">
+                        <input type="text" class="search__input" id="search-input" placeholder="Поиск игр...">
+                        <button type="submit" class="search__submit" aria-label="Найти">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                    </form>
+                    <button type="button" class="icon-btn" id="search-toggle" aria-label="Поиск">
+                        <svg class="icon-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                </div>
+                
+                <a href="favorites.html" class="icon-btn" aria-label="Избранное">
+                    <svg class="icon-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </a>
+                    <!-- Корзина -->
+                    <button type="button" class="icon-btn" aria-label="Корзина">
+                        <svg class="icon-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    </button>
+                </div>
+            </div>
     </header>
 
-    <main>
-        <h2>О магазине Play!</h2>
-        <p>Play! — это магазин настольных игр для всех: от новичков до опытных настольщиков. Мы работаем с 2020 года и за это время помогли тысячам покупателей найти свою идеальную игру.</p>
+    <main class="page">
+        <div class="container">
+            <h1 class="page__title">О компании Play!</h1>
+            <p class="page__lead">Мы помогаем людям находить настольные игры с 2020 года. Начинали с небольшого магазина в Барнауле, а сегодня доставляем игры по всей России.</p>
 
-        <h3>Наши преимущества:</h3>
-        <ul>
-            <li>Более 5000 игр в наличии</li>
-            <li>Помощь в подборе игры под компанию и возраст</li>
-            <li>Быстрая доставка по всей России</li>
-            <li>Регулярные акции и скидки</li>
-        </ul>
+            <section class="page__section">
+                <h2 class="page__subtitle">Наша история</h2>
+                <div class="story">
+                    <div class="story__content">
+                        <p class="story__text">Play! начинался с простой идеи: сделать качественные настольные игры доступными для каждого. В 2020 году мы открыли первый магазин на 40 квадратных метрах с ассортиментом в 200 игр.</p>
+                        <p class="story__text">Сегодня у нас более 5000 игр, собственный склад и команда из 30 человек. Мы работаем напрямую с издателями — поэтому можем держать честные цены и гарантировать оригинальность.</p>
+                        <p class="story__text">Мы сами играем в настолки — вечерами, в выходные, с друзьями. Поэтому хорошо понимаем, что важно для наших покупателей.</p>
+                    </div>
+                </div>
+            </section>
 
-        <h3>Контакты:</h3>
-        <p>Телефон: +7 (999) 000-00-00</p>
-        <p>Email: info@play.ru</p>
-        <p>Адрес: г. Барнаул, пр. Ленина, 1</p>
+            <section class="page__section">
+                <h2 class="page__subtitle">Play! в цифрах</h2>
+                <div class="stats">
+                    <div class="stats__item"><p class="stats__value">6</p><p class="stats__label">лет на рынке</p></div>
+                    <div class="stats__item"><p class="stats__value">5000+</p><p class="stats__label">игр в каталоге</p></div>
+                    <div class="stats__item"><p class="stats__value">30</p><p class="stats__label">человек в команде</p></div>
+                    <div class="stats__item"><p class="stats__value">150 000</p><p class="stats__label">довольных клиентов</p></div>
+                </div>
+            </section>
+
+            <section class="page__section">
+                <h2 class="page__subtitle">Наши принципы</h2>
+                <div class="cards">
+                    <div class="card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="10"></circle></svg></div><p class="card__title">Только оригинал</p><p class="card__text">Работаем напрямую с издателями.</p></div>
+                    <div class="card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div><p class="card__title">Быстро и точно в срок</p><p class="card__text">Отправляем в день оформления.</p></div>
+                    <div class="card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div><p class="card__title">Помогаем выбрать</p><p class="card__text">Подберём игру под возраст.</p></div>
+                    <div class="card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div><p class="card__title">Заботимся о клиентах</p><p class="card__text">Возврат в течение 30 дней.</p></div>
+                </div>
+            </section>
+
+            <section class="page__section">
+                <h2 class="page__subtitle">Свяжитесь с нами</h2>
+                <div class="info-list">
+                    <div class="info-list__item"><div class="info-list__mark">☎</div><div><p class="info-list__title">Телефон</p><p class="info-list__text">8 8000 000-00-00 — бесплатно по России, 9:00–21:00</p></div></div>
+                    <div class="info-list__item"><div class="info-list__mark">✉</div><div><p class="info-list__title">Email</p><p class="info-list__text">info@play.ru — ответим в течение дня</p></div></div>
+                    <div class="info-list__item"><div class="info-list__mark">📍</div><div><p class="info-list__title">Адрес</p><p class="info-list__text">г. Барнаул, ул. Ленина, 46. Самовывоз 10:00–20:00.</p></div></div>
+                </div>
+            </section>
+        </div>
     </main>
 
-    <br><br><br>
-    <footer>
-        <hr>
-        <p>&copy; 2026 Play!. Все права защищены.</p>
+    <footer class="footer">
+        <div class="container footer__container">
+            <div class="footer__contacts">
+                <p class="footer__text">Телефон: <a href="tel:+79990000000" class="footer__link">8 8000 000-00-00</a></p>
+                <p class="footer__text">Email: <a href="mailto:info@play.ru" class="footer__link">info@play.ru</a></p>
+                <p class="footer__text">Адрес: г. Барнаул, ул. Ленина, 46</p>
+            </div>
+            <p class="footer__copyright">&copy; 2026 Play!. Все права защищены.</p>
+        </div>
     </footer>
+
+    <script src="../js/catalog.js"></script>
+    <script src="../js/search.js"></script>
 </body>
 </html>

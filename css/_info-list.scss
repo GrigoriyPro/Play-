@@ -1,0 +1,41 @@
+@use 'variables' as *;
+
+.info-list {
+    display: grid;
+    gap: 12px;
+
+    &__item {
+        display: flex;
+        gap: 16px;
+        padding: 20px 24px;
+        background: $color-bg-card;
+        border: 1px solid $color-border;
+        border-radius: $radius-large;
+    }
+
+    &__mark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: $color-accent;
+        background: $color-accent-soft;
+        border-radius: 50%;
+    }
+
+    &__title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: $color-text-primary;
+    }
+
+    &__text {
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: $color-text-muted;
+    }
+}

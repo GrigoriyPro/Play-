@@ -1,0 +1,56 @@
+@use 'variables' as *;
+
+.checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: $color-text-secondary;
+    cursor: pointer;
+
+    &__input {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+
+        &:checked + .checkbox__box {
+            background: $color-accent;
+            border-color: $color-accent;
+
+            &::after {
+                transform: rotate(45deg) scale(1);
+            }
+        }
+
+        &:focus-visible + .checkbox__box {
+            box-shadow: 0 0 0 3px $color-accent-soft;
+        }
+    }
+
+    &__box {
+        position: relative;
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        background: $color-bg-panel;
+        border: 1px solid $color-border;
+        border-radius: 4px;
+        transition: background 200ms $transition-ease, border-color 200ms $transition-ease;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 1px;
+            width: 5px;
+            height: 10px;
+            border: solid #fff;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg) scale(0);
+            transition: transform 200ms $transition-ease;
+        }
+    }
+}

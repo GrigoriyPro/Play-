@@ -1,0 +1,101 @@
+@use 'variables' as *;
+
+.auth {
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 72px - 200px);
+    padding: 64px 0;
+
+    &__container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    &__card {
+        width: 100%;
+        max-width: 900px;
+        background: $color-bg-card;
+        border: 1px solid $color-border;
+        border-radius: $radius-large;
+        overflow: hidden;
+    }
+
+    &__tabs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-bottom: 1px solid $color-border;
+    }
+
+    &__tab {
+        padding: 16px;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: $color-text-muted;
+        background: transparent;
+        border-bottom: 2px solid transparent;
+        transition: color 200ms $transition-ease, border-color 200ms $transition-ease;
+
+        &:hover {
+            color: $color-text-primary;
+        }
+
+        &--active {
+            color: $color-accent;
+            border-bottom-color: $color-accent;
+        }
+    }
+
+    &__panel {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 32px;
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    &__title {
+        font-size: 1.375rem;
+        font-weight: 700;
+        color: $color-text-primary;
+    }
+
+    &__subtitle {
+        margin-bottom: 8px;
+        font-size: 0.875rem;
+        color: $color-text-muted;
+    }
+
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    &__link {
+        font-size: 0.875rem;
+        color: $color-accent;
+        transition: color 200ms $transition-ease;
+
+        &:hover {
+            color: $color-accent-hover;
+            text-decoration: underline;
+        }
+    }
+
+    &__submit {
+        width: 100%;
+        margin-top: 8px;
+    }
+
+    &__note {
+        font-size: 0.875rem;
+        text-align: center;
+        color: $color-text-muted;
+    }
+}

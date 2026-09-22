@@ -1,0 +1,56 @@
+@use 'variables' as *;
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: 0;
+    }
+
+    &__label {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: $color-text-muted;
+    }
+
+    &__input {
+        width: 100%;
+        min-width: 0;
+        padding: 12px 14px;
+        font: inherit;
+        font-size: 0.9375rem;
+        color: $color-text-primary;
+        background: $color-bg-panel;
+        border: 1px solid $color-border;
+        border-radius: $radius-small;
+        box-sizing: border-box;
+        transition: border-color 200ms $transition-ease, box-shadow 200ms $transition-ease;
+
+        &::placeholder {
+            color: $color-text-disabled;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $color-accent;
+            box-shadow: 0 0 0 3px $color-accent-soft;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 4px;
+    }
+}

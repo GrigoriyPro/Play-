@@ -1,0 +1,45 @@
+// Цвета акцента (фиолетовый)
+$color-accent:        #8b5cf6;
+$color-accent-hover:  #7c3aed;
+$color-accent-active: #6d28d9;
+$color-accent-soft:   rgba(139, 92, 246, 0.15);
+
+// Цвета текста
+$color-text-primary:  #f5f3ff;
+$color-text-secondary:#c4b5fd;
+$color-text-muted:    #a78bfa;
+$color-text-disabled: #6b7280;
+
+// Цвета фонов
+$color-bg-page:       #0a0514;
+$color-bg-card:       #170b2e;
+$color-bg-panel:      #120826;
+$color-bg-footer:     #06010f;
+$color-border:        #2d1b4e;
+
+// Скругления
+$radius-small:  8px;
+$radius-medium: 12px;
+$radius-large:  16px;
+$radius-pill:   999px;
+
+// Тени
+$shadow-small:  0 1px 2px rgba(0, 0, 0, 0.4);
+$shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.5);
+$shadow-large:  0 12px 32px rgba(139, 92, 246, 0.25);
+
+// Анимация
+$transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+// Точки адаптива
+$bp-desktop: 1024px;
+$bp-tablet:  900px;
+$bp-mobile:  768px;
+$bp-small:   480px;
+
+// Миксин медиазапросов
+@mixin media($max) {
+    @media (max-width: $max) {
+        @content;
+    }
+}

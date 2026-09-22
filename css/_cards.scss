@@ -1,0 +1,59 @@
+@use 'variables' as *;
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    background: $color-bg-card;
+    border: 1px solid $color-border;
+    border-radius: $radius-large;
+    transition: border-color 200ms $transition-ease, transform 200ms $transition-ease;
+
+    &:hover {
+        border-color: $color-accent;
+        transform: translateY(-2px);
+    }
+
+    &__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        color: $color-accent;
+        background: $color-accent-soft;
+        border-radius: 50%;
+
+        svg {
+            width: 26px;
+            height: 26px;
+        }
+    }
+
+    &__title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: $color-text-primary;
+    }
+
+    &__text {
+        flex-grow: 1;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: $color-text-muted;
+    }
+
+    &__price {
+        margin-top: 4px;
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: $color-accent;
+    }
+}

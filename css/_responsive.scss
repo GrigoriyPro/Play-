@@ -1,0 +1,29 @@
+@use 'variables' as *;
+
+@include media($bp-desktop) {
+    .header__container { gap: 20px; }
+    .nav__link, .catalog-toggle { padding: 24px 10px; font-size: 0.875rem; }
+    .features__list { grid-template-columns: repeat(2, 1fr); }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .catalog-page { grid-template-columns: 220px 1fr; gap: 24px; }
+}
+
+@include media($bp-tablet) {
+    .product-page__grid { grid-template-columns: 1fr; gap: 24px; }
+    .catalog-panel { position: fixed; top: 72px; left: 0; right: 0; min-width: 0; }
+}
+
+@include media($bp-mobile) {
+    .header__container { height: auto; padding: 12px 0; flex-wrap: wrap; gap: 12px; }
+    .nav { order: 3; flex: 1 0 100%; overflow-x: auto; }
+    .hero { min-height: 440px; }
+    .hero__arrow { display: none; }
+    .features__list { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .form__row { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr; }
+    .catalog-page { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: 1fr; }
+    .footer__contacts { flex-direction: column; }
+}

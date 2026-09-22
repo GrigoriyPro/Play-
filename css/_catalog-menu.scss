@@ -1,0 +1,100 @@
+@use 'variables' as *;
+
+.catalog-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 24px 16px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: $color-text-secondary;
+    transition: color 200ms $transition-ease;
+
+    &:hover {
+        color: $color-accent;
+    }
+
+    &[aria-expanded="true"] {
+        color: $color-accent;
+
+        .catalog-toggle__chevron {
+            transform: rotate(180deg);
+        }
+    }
+
+    &__chevron {
+        width: 14px;
+        height: 14px;
+        transition: transform 200ms $transition-ease;
+    }
+}
+
+.catalog-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 90;
+    min-width: 260px;
+    background: $color-bg-card;
+    border: 1px solid $color-border;
+    border-radius: 0 0 $radius-large $radius-large;
+    box-shadow: $shadow-large;
+    overflow: hidden;
+
+    display: none;
+    transform-origin: top;
+    animation: catalogSlideDown 220ms $transition-ease forwards;
+
+    &.is-open {
+        display: block;
+    }
+}
+
+@keyframes catalogSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scaleY(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+    }
+}
+
+.catalog-categories {
+    padding: 10px 0;
+    background: $color-bg-panel;
+
+    &__item {
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        text-align: left;
+        color: $color-text-secondary;
+        transition: background 150ms $transition-ease, color 150ms $transition-ease;
+
+        &:hover {
+            background: $color-accent-soft;
+            color: $color-accent;
+        }
+
+        &--active {
+            background: $color-bg-card;
+            color: $color-accent;
+            font-weight: 600;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 3px;
+                background: $color-accent;
+            }
+        }
+    }
+}

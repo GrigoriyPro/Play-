@@ -1,0 +1,39 @@
+@use 'variables' as *;
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    border-radius: $radius-small;
+    transition: background 200ms $transition-ease, color 200ms $transition-ease, opacity 200ms $transition-ease;
+    cursor: pointer;
+
+    &--primary {
+        color: #fff;
+        background: $color-accent;
+
+        &:hover:not(:disabled) {
+            background: $color-accent-hover;
+        }
+    }
+
+    &--ghost {
+        color: $color-accent;
+        background: transparent;
+        border: 1px dashed $color-accent;
+
+        &:hover:not(:disabled) {
+            background: $color-accent-soft;
+        }
+    }
+
+    // Заблокированная кнопка
+    &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}

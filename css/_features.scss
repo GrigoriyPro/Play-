@@ -1,0 +1,63 @@
+@use 'variables' as *;
+
+.features {
+    padding: 50px 0;
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        background: $color-bg-card;
+        border: 1px solid $color-border;
+        border-radius: $radius-large;
+        box-shadow: $shadow-medium;
+        overflow: hidden;
+    }
+
+    &__item {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 28px 24px;
+
+        &:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 24px;
+            bottom: 24px;
+            width: 1px;
+            background: $color-border;
+        }
+    }
+
+    &__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        color: $color-accent;
+        background: $color-accent-soft;
+        border-radius: 50%;
+
+        svg {
+            width: 26px;
+            height: 26px;
+        }
+    }
+
+    &__title {
+        font-size: 0.9375rem;
+        font-weight: 700;
+        line-height: 1.3;
+        color: $color-text-primary;
+    }
+
+    &__text {
+        font-size: 0.8125rem;
+        line-height: 1.5;
+        color: $color-text-muted;
+    }
+}

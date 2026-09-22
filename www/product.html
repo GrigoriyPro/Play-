@@ -2,96 +2,162 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Play! - Стратегии</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play! - Карточка товара</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-    <!-- Шапка сайта -->
-    <header>
-        <h1>Play!</h1>
-        <nav>
-            <a href="index.html">Главная</a> |
-            <a href="catalog.html">Каталог</a> |
-            <a href="delivery.html">Доставка и оплата</a> |
-            <a href="about.html">О нас</a> |
-            <a href="profile.html">Профиль</a>
-        </nav>
-        <hr>
+    <header class="header">
+        <div class="container header__container">
+            <a href="index.html" class="logo">
+                <span class="logo__title">Play<span class="logo__accent">!</span></span>
+            </a>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
+                    <li class="nav__item nav__item--dropdown">
+                        <button type="button" class="catalog-toggle nav__link--active" id="catalog-toggle" aria-expanded="false">
+                            Каталог
+                            <svg class="catalog-toggle__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="catalog-panel" id="catalog-panel">
+                            <div class="catalog-categories">
+                                <a href="catalog.html?genre=strategy" class="catalog-categories__item">Стратегии</a>
+                                <a href="catalog.html?genre=card" class="catalog-categories__item">Карточные</a>
+                                <a href="catalog.html?genre=family" class="catalog-categories__item">Семейные</a>
+                                <a href="catalog.html?genre=puzzle" class="catalog-categories__item">Головоломки</a>
+                                <a href="catalog.html?genre=party" class="catalog-categories__item">Для вечеринок</a>
+                                <a href="catalog.html" class="catalog-categories__item">Другие</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__item"><a href="delivery.html" class="nav__link">Доставка и оплата</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">О нас</a></li>
+                    <li class="nav__item"><a href="profile.html" class="nav__link">Профиль</a></li>
+                </ul>
+            </nav>
+            <div class="actions">
+                <div class="search">
+                    <form class="search__form" id="search-form">
+                        <input type="text" class="search__input" id="search-input" placeholder="Поиск игр...">
+                        <button type="submit" class="search__submit" aria-label="Найти">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                    </form>
+                    <button type="button" class="icon-btn" id="search-toggle" aria-label="Поиск">
+                        <svg class="icon-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                </div>
+                <a href="favorites.html" class="icon-btn" aria-label="Избранное">
+                    <svg class="icon-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </a>
+                <button type="button" class="icon-btn" aria-label="Корзина">
+                    <svg class="icon-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <!-- Основной контент -->
-    <main>
-        <p>
-            <a href="index.html">Главная</a> &gt;
-            <a href="catalog.html">Каталог</a> &gt;
-            <b>Стратегии</b>
-        </p>
+    <main class="page">
+        <div class="container">
 
-        <h2>Категория: Стратегии</h2>
-        <p>Найдено игр: 3</p>
+            <p class="product-breadcrumb" data-product-breadcrumb>
+                <a href="index.html">Главная</a>
+                <span>›</span>
+                <a href="catalog.html">Каталог</a>
+                <span>›</span>
+                <b>Игра</b>
+            </p>
 
-        <table border="1" cellpadding="10" cellspacing="0" width="100%">
-            <thead>
-                <tr>
-                    <th>Фото</th>
-                    <th>Название игры</th>
-                    <th>Цена</th>
-                    <th>Действие</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Игра 1 -->
-                <tr>
-                    <td align="center">[Фото]</td>
-                    <td>
-                        <h3><a href="product.html">Каркассон</a></h3>
-                        <p>Классическая стратегия на составление карты. Игроков: 2-5. Время: 45 мин.</p>
-                    </td>
-                    <td align="center"><b>2 490 руб.</b></td>
-                    <td align="center">
-                        <a href="#">В корзину</a>
-                    </td>
-                </tr>
+            <div class="product-page__grid">
 
-                <!-- Игра 2 -->
-                <tr>
-                    <td align="center">[Фото]</td>
-                    <td>
-                        <h3><a href="product.html">Колонизаторы</a></h3>
-                        <p>Экономическая стратегия про освоение острова. Игроков: 3-4. Время: 120 мин.</p>
-                    </td>
-                    <td align="center"><b>3 490 руб.</b></td>
-                    <td align="center">
-                        <a href="#">В корзину</a>
-                    </td>
-                </tr>
+                <!-- ЛЕВАЯ КОЛОНКА: ФОТО -->
+                <div class="product-page__gallery">
+                    <div class="product-page__image-wrap">
+                        <img class="product-page__image" data-product-image src="../images/products/monopoly.jpg" alt="Игра">
+                        <span class="product-page__badge product-page__badge--new" data-product-badge-new hidden>Новинка</span>
+                        <span class="product-page__badge product-page__badge--sale" data-product-badge-sale hidden>-15%</span>
+                    </div>
+                </div>
 
-                <!-- Игра 3 -->
-                <tr>
-                    <td align="center">[Фото]</td>
-                    <td>
-                        <h3><a href="product.html">Манчкин</a></h3>
-                        <p>Пародийная карточная стратегия про подземелья. Игроков: 3-6. Время: 90 мин.</p>
-                    </td>
-                    <td align="center"><b>1 990 руб.</b></td>
-                    <td align="center">
-                        <a href="#">В корзину</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                <!-- ПРАВАЯ КОЛОНКА: ИНФОРМАЦИЯ -->
+                <div class="product-page__body">
 
-        <br>
-        <a href="catalog.html">&lt;&lt; Вернуться в каталог</a>
+                    <p class="product-page__brand" data-product-brand>Издатель</p>
+                    <h1 class="product-page__title" data-product-title>Игра</h1>
+
+                    <!-- ЦЕНА -->
+                    <div class="product-page__price-block">
+                        <span class="product-page__price" data-product-price>0 ₽</span>
+                        <span class="product-page__old-price" data-product-old-price hidden>0 ₽</span>
+                        <span class="product-page__discount" data-product-discount hidden>-0%</span>
+                    </div>
+                    <p class="product-page__stock">✓ В наличии</p>
+
+                    <!-- ХАРАКТЕРИСТИКИ -->
+                    <div class="product-page__specs">
+                        <h3 class="product-page__specs-title">Характеристики</h3>
+                        <ul class="product-page__specs-list">
+                            <li class="product-page__spec">
+                                <span class="product-page__spec-label">Количество игроков</span>
+                                <span class="product-page__spec-value" data-spec-players>—</span>
+                            </li>
+                            <li class="product-page__spec">
+                                <span class="product-page__spec-label">Возраст</span>
+                                <span class="product-page__spec-value" data-spec-age>—</span>
+                            </li>
+                            <li class="product-page__spec">
+                                <span class="product-page__spec-label">Время партии</span>
+                                <span class="product-page__spec-value" data-spec-time>—</span>
+                            </li>
+                            <li class="product-page__spec">
+                                <span class="product-page__spec-label">Издатель</span>
+                                <span class="product-page__spec-value" data-spec-brand>—</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- ОПИСАНИЕ -->
+                    <div class="product-page__description">
+                        <h3 class="product-page__specs-title">Описание</h3>
+                        <p data-product-description>Описание...</p>
+                    </div>
+
+                    <!-- ДЕЙСТВИЯ -->
+                    <div class="product-page__actions">
+                        <button type="button" class="btn btn--primary product-page__add">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                            В корзину
+                        </button>
+                        <button type="button" class="product-page__favorite" data-favorite-btn aria-label="В избранное">
+                            <svg class="product-page__favorite-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
     </main>
 
-    <br><br><br>
-
-    <!-- Подвал -->
-    <footer>
-        <hr>
-        <p>&copy; 2026 Play!. Все права защищены.</p>
-        <p>Телефон: +7 (999) 000-00-00 | Email: info@play.ru</p>
+    <footer class="footer">
+        <div class="container footer__container">
+            <div class="footer__contacts">
+                <p class="footer__text">Телефон: <a href="tel:+79990000000" class="footer__link">8 8000 000-00-00</a></p>
+                <p class="footer__text">Email: <a href="mailto:info@play.ru" class="footer__link">info@play.ru</a></p>
+                <p class="footer__text">Адрес: г. Барнаул, ул. Ленина, 46</p>
+            </div>
+            <p class="footer__copyright">&copy; 2026 Play!. Все права защищены.</p>
+        </div>
     </footer>
+
+    <script src="../js/catalog.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/product.js"></script>
 </body>
 </html>

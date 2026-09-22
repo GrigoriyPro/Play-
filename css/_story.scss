@@ -1,0 +1,50 @@
+@use 'variables' as *;
+
+.story {
+    padding: 28px 32px;
+    background: $color-bg-card;
+    border: 1px solid $color-border;
+    border-radius: $radius-large;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        max-width: 720px;
+    }
+
+    &__text {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: $color-text-secondary;
+    }
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 24px;
+        text-align: center;
+        background: $color-bg-card;
+        border: 1px solid $color-border;
+        border-radius: $radius-large;
+    }
+
+    &__value {
+        font-size: clamp(1.75rem, 3vw, 2.5rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: $color-accent;
+    }
+
+    &__label {
+        font-size: 0.875rem;
+        color: $color-text-muted;
+    }
+}

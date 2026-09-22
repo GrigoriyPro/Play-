@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play! - Главная</title>
+    <title>Play! - Избранное</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
             </a>
             <nav class="nav">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link nav__link--active">Главная</a></li>
+                    <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
                     <li class="nav__item nav__item--dropdown">
                         <button type="button" class="catalog-toggle" id="catalog-toggle" aria-expanded="false">
                             Каталог
@@ -61,51 +61,14 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero__bg"></div>
-        <div class="container hero__container">
-            <div class="hero__content">
-                <p class="hero__eyebrow"></p>
-                <h1 class="hero__title"></h1>
-                <p class="hero__subtitle"></p>
-                <a href="catalog.html" class="btn btn--primary">Перейти в каталог</a>
-            </div>
-        </div>
-        <button type="button" class="hero__arrow hero__arrow--prev" aria-label="Назад">
-            <svg class="hero__arrow__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-        <button type="button" class="hero__arrow hero__arrow--next" aria-label="Вперёд">
-            <svg class="hero__arrow__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </button>
-        <div class="hero__dots">
-            <button type="button" class="hero__dot hero__dot--active" data-slide-to="0" aria-label="Слайд 1"></button>
-            <button type="button" class="hero__dot" data-slide-to="1" aria-label="Слайд 2"></button>
-            <button type="button" class="hero__dot" data-slide-to="2" aria-label="Слайд 3"></button>
-        </div>
-    </section>
-
-    <section class="features">
+    <main class="page">
         <div class="container">
-            <div class="features__list">
-                <div class="features__item">
-                    <div class="features__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
-                    <div><p class="features__title">Только оригинал</p><p class="features__text">Игры от официальных издателей</p></div>
-                </div>
-                <div class="features__item">
-                    <div class="features__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></div>
-                    <div><p class="features__title">Быстрая доставка</p><p class="features__text">По всей России от 1 дня</p></div>
-                </div>
-                <div class="features__item">
-                    <div class="features__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></div>
-                    <div><p class="features__title">Удобная оплата</p><p class="features__text">Картой, СБП или при получении</p></div>
-                </div>
-                <div class="features__item">
-                    <div class="features__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
-                    <div><p class="features__title">Поддержка 24/7</p><p class="features__text">Поможем выбрать игру</p></div>
-                </div>
-            </div>
+            <h1 class="catalog-page__title">Избранное</h1>
+            <p class="catalog-page__count" data-favorites-count>0 товаров</p>
+
+            <div class="products-grid" data-favorites-grid style="margin-top: 24px;"></div>
         </div>
-    </section>
+    </main>
 
     <footer class="footer">
         <div class="container footer__container">
@@ -118,8 +81,8 @@
         </div>
     </footer>
 
-    <script src="../js/slider.js"></script>
     <script src="../js/catalog.js"></script>
     <script src="../js/search.js"></script>
+    <script src="../js/favorites.js"></script>
 </body>
 </html>

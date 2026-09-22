@@ -1,0 +1,296 @@
+@use 'variables' as *;
+
+// ===== Хлебные крошки =====
+.product-breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    font-size: 0.875rem;
+    color: $color-text-muted;
+
+    a {
+        color: $color-text-secondary;
+        transition: color 200ms $transition-ease;
+
+        &:hover {
+            color: $color-accent;
+        }
+    }
+
+    span {
+        color: $color-text-disabled;
+    }
+
+    b {
+        color: $color-text-primary;
+        font-weight: 600;
+    }
+}
+
+// ===== Страница товара =====
+.product-page {
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+    }
+
+    // ===== ЛЕВАЯ КОЛОНКА: ГАЛЕРЕЯ =====
+    &__gallery {
+        position: sticky;
+        top: 100px;
+    }
+
+    &__image-wrap {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        background: $color-bg-card;
+        border: 1px solid $color-border;
+        border-radius: $radius-large;
+        overflow: hidden;
+        transition: border-color 300ms $transition-ease, box-shadow 300ms $transition-ease;
+
+        &:hover {
+            border-color: $color-accent;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15);
+        }
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 600ms $transition-ease;
+
+        .product-page__image-wrap:hover & {
+            transform: scale(1.05);
+        }
+    }
+
+    &__badge {
+        position: absolute;
+        top: 20px;
+        padding: 8px 16px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: #fff;
+        border-radius: $radius-pill;
+        z-index: 2;
+
+        &--new {
+            left: 20px;
+            background: $color-accent;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+        }
+
+        &--sale {
+            right: 20px;
+            background: #ef4444;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        }
+    }
+
+    // ===== ПРАВАЯ КОЛОНКА: ИНФОРМАЦИЯ =====
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    &__brand {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: $color-accent;
+    }
+
+    &__title {
+        margin: 0;
+        font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: $color-text-primary;
+    }
+
+    // ===== ЦЕНА =====
+    &__price-block {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        padding: 20px 0;
+        border-top: 1px solid $color-border;
+        border-bottom: 1px solid $color-border;
+    }
+
+    &__price {
+        font-size: 2.5rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: $color-text-primary;
+    }
+
+    &__old-price {
+        font-size: 1.25rem;
+        color: $color-text-muted;
+        text-decoration: line-through;
+    }
+
+    &__discount {
+        padding: 4px 10px;
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #fff;
+        background: #ef4444;
+        border-radius: $radius-pill;
+    }
+
+    &__stock {
+        font-size: 0.9375rem;
+        color: #4ade80;
+        margin-top: -12px;
+    }
+
+    // ===== ХАРАКТЕРИСТИКИ =====
+    &__specs {
+        padding: 24px;
+        background: $color-bg-card;
+        border: 1px solid $color-border;
+        border-radius: $radius-large;
+    }
+
+    &__specs-title {
+        margin: 0 0 16px 0;
+        font-size: 1rem;
+        font-weight: 700;
+        color: $color-text-primary;
+    }
+
+    &__specs-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__spec {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        font-size: 0.9375rem;
+        border-bottom: 1px dashed $color-border;
+
+        &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        &:first-child {
+            padding-top: 0;
+        }
+    }
+
+    &__spec-label {
+        color: $color-text-muted;
+    }
+
+    &__spec-value {
+        font-weight: 600;
+        color: $color-text-primary;
+    }
+
+    // ===== ОПИСАНИЕ =====
+    &__description {
+        p {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            color: $color-text-secondary;
+        }
+    }
+
+    // ===== ДЕЙСТВИЯ =====
+    &__actions {
+        display: flex;
+        gap: 12px;
+        padding-top: 8px;
+    }
+
+    &__add {
+        flex-grow: 1;
+        padding: 18px 32px;
+        font-size: 1rem;
+    }
+
+    &__favorite {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
+        color: $color-text-secondary;
+        background: $color-bg-card;
+        border: 1px solid $color-border;
+        border-radius: $radius-small;
+        cursor: pointer;
+        transition: all 250ms $transition-ease;
+
+        &:hover {
+            color: $color-accent;
+            background: $color-accent-soft;
+            border-color: $color-accent;
+            transform: scale(1.05);
+        }
+
+        // Активное состояние (в избранном)
+        &.is-active {
+            color: #fff;
+            background: $color-accent;
+            border-color: $color-accent;
+
+            .product-page__favorite-icon {
+                fill: #fff;
+            }
+        }
+    }
+
+    &__favorite-icon {
+        transition: fill 250ms $transition-ease;
+    }
+}
+
+// ===== Адаптив =====
+@include media($bp-tablet) {
+    .product-page__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .product-page__gallery {
+        position: static;
+    }
+}
+
+@include media($bp-mobile) {
+    .product-page__title {
+        font-size: 1.75rem;
+    }
+
+    .product-page__price {
+        font-size: 2rem;
+    }
+
+    .product-page__actions {
+        flex-direction: column;
+    }
+
+    .product-page__favorite {
+        width: 100%;
+        height: 52px;
+    }
+}

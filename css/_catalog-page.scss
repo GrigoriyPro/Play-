@@ -1,0 +1,98 @@
+@use 'variables' as *;
+
+.catalog-page {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 32px;
+    align-items: start;
+
+    &__main {
+        min-width: 0;
+    }
+
+    &__head {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 24px;
+        margin-bottom: 24px;
+    }
+
+    &__title {
+        margin-bottom: 6px;
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 800;
+        line-height: 1.15;
+    }
+
+    &__count {
+        font-size: 0.875rem;
+        color: $color-text-muted;
+    }
+
+    &__sort {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.875rem;
+        color: $color-text-muted;
+    }
+
+    &__empty {
+        grid-column: 1 / -1;
+        padding: 48px;
+        text-align: center;
+        color: $color-text-muted;
+        background: $color-bg-card;
+        border: 1px dashed $color-border;
+        border-radius: $radius-large;
+    }
+
+    &__more {
+        display: flex;
+        justify-content: center;
+        margin-top: 32px;
+    }
+}
+
+.catalog-page__sort {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: $color-text-muted;
+
+    select {
+        padding: 10px 36px 10px 14px;
+        font: inherit;
+        font-size: 0.875rem;
+        color: $color-text-primary;
+        background-color: $color-bg-card;
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a78bfa' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        border: 1px solid $color-border;
+        border-radius: $radius-small;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        transition: border-color 200ms $transition-ease, box-shadow 200ms $transition-ease;
+
+        &:hover {
+            border-color: $color-accent;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $color-accent;
+            box-shadow: 0 0 0 3px $color-accent-soft;
+        }
+
+        option {
+            background: $color-bg-card;
+            color: $color-text-primary;
+            padding: 8px;
+        }
+    }
+}
