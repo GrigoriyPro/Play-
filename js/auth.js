@@ -29,32 +29,60 @@
 
     // ===== РЕГУЛЯРКИ =====
     const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,6}$/;
-    const NAME_REGEX  = /^[А-Яа-яЁёA-Za-z\s\-]{2,50}$/;
+    const NAME_REGEX  = /^[А-ЯЁA-Z][а-яёa-z\-]+$/;
+
+    // ===== АВТОКАПИТАЛИЗАЦИЯ =====
+    function capitalize(value) {
+        if (!value) return value;
+        return value
+            .split(/(\s|-)/)
+            .map(part => {
+                if (part === ' ' || part === '-') return part;
+                return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+            })
+            .join('');
+    }
 
     // ===== ПРОВЕРКИ =====
     function checkEmail(input) {
         if (!input) return true;
         const value = input.value.trim();
-        if (!value) { input.setCustomValidity(''); return false; }
+        if (!value) { input.setCustomValidity(''); markValid(input, false); return false; }
 
         if (!EMAIL_REGEX.test(value)) {
             input.setCustomValidity('Введите корректный email, например: name@mail.ru');
+            markValid(input, false);
             return false;
         }
         input.setCustomValidity('');
+        markValid(input, true);
         return true;
     }
 
     function checkName(input) {
         if (!input) return true;
         const value = input.value.trim();
-        if (!value) { input.setCustomValidity(''); return false; }
+        if (!value) { input.setCustomValidity(''); markValid(input, false); return false; }
+
+        if (value.length < 2) {
+            input.setCustomValidity('Минимум 2 символа');
+            markValid(input, false);
+            return false;
+        }
+
+        if (value.length > 50) {
+            input.setCustomValidity('Максимум 50 символов');
+            markValid(input, false);
+            return false;
+        }
 
         if (!NAME_REGEX.test(value)) {
-            input.setCustomValidity('Введите данные в указанном формате. Только буквы, пробел и дефис. От 2 до 50 символов.');
+            input.setCustomValidity('Первая буква должна быть заглавной. Только буквы, дефис.');
+            markValid(input, false);
             return false;
         }
         input.setCustomValidity('');
+        markValid(input, true);
         return true;
     }
 
@@ -63,14 +91,30 @@
         const confirm = form.querySelector('input[name="password-confirm"]');
         if (!pass || !confirm) return true;
 
-        if (!confirm.value) { confirm.setCustomValidity(''); return false; }
+        if (!confirm.value) { confirm.setCustomValidity(''); markValid(confirm, false); return false; }
 
         if (pass.value !== confirm.value) {
             confirm.setCustomValidity('Пароли не совпадают');
+            markValid(confirm, false);
             return false;
         }
         confirm.setCustomValidity('');
+        markValid(confirm, true);
         return true;
+    }
+
+    // ===== ПОДСВЕТКА ПОЛЕЙ =====
+    function markValid(input, valid) {
+        if (!input) return;
+        if (valid) {
+            input.classList.remove('form__input--error');
+            input.classList.add('form__input--ok');
+        } else if (input.value.length > 0) {
+            input.classList.add('form__input--error');
+            input.classList.remove('form__input--ok');
+        } else {
+            input.classList.remove('form__input--error', 'form__input--ok');
+        }
     }
 
     // ===== ФОРМЫ =====
@@ -84,19 +128,17 @@
         const passwordInput   = form.querySelector('input[name="password"]');
         const agreeCheckbox   = form.querySelector('input[type="checkbox"][required]');
         const submitBtn       = form.querySelector('button[type="submit"]');
-        const isRegisterForm  = !!confirmInput; // если есть подтверждение пароля — это регистрация
+        const isRegisterForm  = !!confirmInput;
 
-        // ===== ВАЛИДАЦИЯ ФОРМЫ (для активации кнопки) =====
+        // ===== ВАЛИДАЦИЯ ДЛЯ КНОПКИ =====
         function validateForm() {
             if (!isRegisterForm) {
-                // Для формы входа — просто проверяем заполнение и формат
                 const okEmail = emailInput ? EMAIL_REGEX.test(emailInput.value.trim()) : true;
                 const okPass  = passwordInput ? passwordInput.value.length >= 6 : true;
                 if (submitBtn) submitBtn.disabled = !(okEmail && okPass);
                 return;
             }
 
-            // Регистрация
             const okEmail = emailInput ? EMAIL_REGEX.test(emailInput.value.trim()) : false;
             const okFirst = firstnameInput ? NAME_REGEX.test(firstnameInput.value.trim()) : false;
             const okLast  = lastnameInput ? NAME_REGEX.test(lastnameInput.value.trim()) : false;
@@ -109,14 +151,41 @@
             }
         }
 
-        // Следим за изменениями
         form.addEventListener('input', validateForm);
         form.addEventListener('change', validateForm);
 
-        // Обработчики для мгновенной валидации при вводе
+        // ===== АВТОКАПИТАЛИЗАЦИЯ =====
+        if (firstnameInput) {
+            firstnameInput.addEventListener('input', (e) => {
+                const pos = e.target.selectionStart;
+                const before = e.target.value;
+                const after = capitalize(before);
+
+                if (before !== after) {
+                    e.target.value = after;
+                    e.target.setSelectionRange(pos, pos);
+                }
+
+                checkName(firstnameInput);
+            });
+        }
+
+        if (lastnameInput) {
+            lastnameInput.addEventListener('input', (e) => {
+                const pos = e.target.selectionStart;
+                const before = e.target.value;
+                const after = capitalize(before);
+
+                if (before !== after) {
+                    e.target.value = after;
+                    e.target.setSelectionRange(pos, pos);
+                }
+
+                checkName(lastnameInput);
+            });
+        }
+
         if (emailInput)     emailInput.addEventListener('input', () => checkEmail(emailInput));
-        if (firstnameInput) firstnameInput.addEventListener('input', () => checkName(firstnameInput));
-        if (lastnameInput)  lastnameInput.addEventListener('input', () => checkName(lastnameInput));
         if (confirmInput)   confirmInput.addEventListener('input', () => checkPasswords(form));
 
         // ===== ОТПРАВКА =====
@@ -137,7 +206,6 @@
             console.log('Форма отправлена:', data);
         });
 
-        // Первая проверка
         validateForm();
     });
 
@@ -145,9 +213,7 @@
     tabs.forEach((tab) => {
         tab.addEventListener('click', () => {
             setTimeout(() => {
-                forms.forEach((form) => {
-                    form.dispatchEvent(new Event('input'));
-                });
+                forms.forEach((form) => form.dispatchEvent(new Event('input')));
             }, 50);
         });
     });

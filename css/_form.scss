@@ -35,7 +35,9 @@
         border: 1px solid $color-border;
         border-radius: $radius-small;
         box-sizing: border-box;
-        transition: border-color 200ms $transition-ease, box-shadow 200ms $transition-ease;
+        transition: border-color 200ms $transition-ease,
+                    box-shadow 200ms $transition-ease,
+                    background 200ms $transition-ease;
 
         &::placeholder {
             color: $color-text-disabled;
@@ -45,6 +47,25 @@
             outline: none;
             border-color: $color-accent;
             box-shadow: 0 0 0 3px $color-accent-soft;
+        }
+
+        // ❌ Ошибка — красная рамка
+        &--error {
+            border-color: #ef4444 !important;
+            background: rgba(239, 68, 68, 0.05);
+
+            &:focus {
+                box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+            }
+        }
+
+        // ✅ Валидно — зелёная рамка
+        &--ok {
+            border-color: #22c55e;
+
+            &:focus {
+                box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2) !important;
+            }
         }
     }
 
